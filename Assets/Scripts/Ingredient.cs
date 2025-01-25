@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Ingredient : ScriptableObject
 {
-    public string Name;
+    public string iName;
     public Mesh model;
     public Texture tex;
 }
