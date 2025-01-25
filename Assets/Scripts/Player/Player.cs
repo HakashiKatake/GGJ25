@@ -31,10 +31,8 @@ public class Player : Bubble
     // Update is called once per frame
     void Update()
     {
-        updateSize();
+
     }
 
-    void OnMove(InputValue ctx) {
-        
-    }
+  
 }

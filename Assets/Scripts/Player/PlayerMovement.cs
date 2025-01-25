@@ -1,20 +1,15 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField]
     private float _baseSpeed;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Rigidbody rb;
+    public void OnMove(InputValue ctx)
     {
-        
+        rb.linearVelocity = Vector2.right * _baseSpeed * ctx.Get<Vector2>().x;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
