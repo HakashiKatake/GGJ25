@@ -479,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 42}
+  m_AnchoredPosition: {x: 5, y: -28}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634860159
@@ -511,8 +511,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -535,9 +535,9 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -64.60867, y: 0, z: -78.69524, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -887,12 +887,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0d10150ea5b4974adbeb3e3987ad28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsText: "Game Development Team:\n\nProgramming: \nArt:  \nMusic: \n\nSpecial
-    Thanks:\n\nThank you for playing!"
+  creditsText: "Game Development Team:\n\nProgramming: graphicmismatch & Hakashi
+    Katake\nArt: Mudassir Khatri\nMusic: Tanay Jain \n\nSpecial Thanks: GGJ!\n\nThank
+    you for playing!"
   uiText: {fileID: 634860159}
   scrollSpeed: 50
   startDelay: 2
-  endPosition: 1000
+  endPosition: 500
   buttonsContainer: {fileID: 371161407}
 --- !u!4 &1201138021
 Transform:
@@ -903,7 +904,7 @@ Transform:
   m_GameObject: {fileID: 1201138018}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.367239, y: 4.159092, z: 143.42932}
+  m_LocalPosition: {x: 4.8, y: 4.159092, z: 143.42932}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
