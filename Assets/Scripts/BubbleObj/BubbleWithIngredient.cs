@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class BubbleWithIngredient : Bubble
 {
-
-    [SerializeField]
-    private float _baseSpeed;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

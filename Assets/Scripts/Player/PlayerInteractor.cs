@@ -6,7 +6,6 @@ public class PlayerInteractor : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField]
     int _frameCD;
-    private float _radius;
     [SerializeField]
     private float _forgivenessRadius;
     [SerializeField]
@@ -21,7 +20,7 @@ public class PlayerInteractor : MonoBehaviour
     void Update()
     {
         if (_frameCounter == _frameCD) {
-            Collider[] hits = Physics.OverlapSphere(transform.position, _radius + _forgivenessRadius, _interactionLayers, QueryTriggerInteraction.Collide);
+            Collider[] hits = Physics.OverlapSphere(transform.position, (transform.localScale.x /2)+ _forgivenessRadius, _interactionLayers, QueryTriggerInteraction.Collide);
             foreach (Collider hit in hits) {
                 if (hit.tag == "Bubble") {
                     
@@ -29,6 +28,7 @@ public class PlayerInteractor : MonoBehaviour
                 }
 
             }
+            _frameCounter = 0;
         }
         _frameCounter++;
     }
