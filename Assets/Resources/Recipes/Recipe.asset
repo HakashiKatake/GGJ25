@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b45a21618c52542a080a93b4a42fc1, type: 3}
   m_Name: Recipe
   m_EditorClassIdentifier: 
+  rName: 
+  Ingredients: []
+  model: {fileID: 0}
+  tex: {fileID: 0}

@@ -10,6 +10,9 @@ public class Player : Bubble
 
     [SerializeField]
     private float _baseSpeed;
+
+    [SerializeField]
+    private BubbleMatHelper _matHelper;
     override public void merge(Bubble other)
     {
         Destroy(other.gameObject);
@@ -22,11 +25,15 @@ public class Player : Bubble
         radius = startRadius;
         updateSize();
     }
-
+    protected override void updateSize()
+    {
+        base.updateSize();
+        _matHelper.updateTexScale();
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        updateSize();
     }
 
     void OnMove(InputValue ctx) {
