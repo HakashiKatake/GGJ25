@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: PavBhaji
   m_EditorClassIdentifier: 
   rName: Pav Bhaji
-  Ingredients: []
+  Ingredients:
+  - {fileID: 11400000, guid: 40ef172478134144d924dd99d1ef1a8a, type: 2}
+  - {fileID: 11400000, guid: 9506db5929bc26740b6836587df2b803, type: 2}
+  - {fileID: 11400000, guid: 85a9b5d63185c3a4d849a7f3d8621cff, type: 2}
   model: {fileID: 3678291056675548223, guid: 0f03555af19091c4a818b17da5a1b2b6, type: 3}

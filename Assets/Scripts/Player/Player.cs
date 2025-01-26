@@ -8,13 +8,15 @@ public class Player : Bubble
     public float maxRadius;
     [SerializeField]
     private PlayerInteractor _interactor;
-
+    [SerializeField]
+    private AudioRandomiser _ar;
     [SerializeField]
     private BubbleMatHelper _matHelper;
     override public void merge(Bubble other)
     {
         Destroy(other.gameObject);
         radius = Mathf.Min(Mathf.Sqrt((other.radius * other.radius) + (radius * radius)),maxRadius);
+        _ar.PlayRandom();
         updateSize();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created

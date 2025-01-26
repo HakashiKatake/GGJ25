@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: VadaPav
   m_EditorClassIdentifier: 
   rName: Vada Pav
-  Ingredients: []
+  Ingredients:
+  - {fileID: 11400000, guid: 04f3495bbebb97a44821754fe45b517c, type: 2}
+  - {fileID: 11400000, guid: 40ef172478134144d924dd99d1ef1a8a, type: 2}
+  - {fileID: 11400000, guid: d2b82a7c970c15d4a9583abc0245e9d8, type: 2}
   model: {fileID: 6572983660676932083, guid: 6c87433b9ae266d4db0d4035e7aab3eb, type: 3}

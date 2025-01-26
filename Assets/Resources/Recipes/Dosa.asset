@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Dosa
   m_EditorClassIdentifier: 
   rName: Dosa
-  Ingredients: []
+  Ingredients:
+  - {fileID: 11400000, guid: 5a1798e6a97c6854e8b1dadd28699a67, type: 2}
+  - {fileID: 11400000, guid: 04f3495bbebb97a44821754fe45b517c, type: 2}
+  - {fileID: 11400000, guid: b1bffc66f1c11f44d8a8675549842787, type: 2}
   model: {fileID: 4283303427335011105, guid: 5cc674012ba7e08498e702574395daef, type: 3}

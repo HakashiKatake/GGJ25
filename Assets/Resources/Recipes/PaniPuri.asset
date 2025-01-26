@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: PaniPuri
   m_EditorClassIdentifier: 
   rName: Pani Puri
-  Ingredients: []
+  Ingredients:
+  - {fileID: 11400000, guid: 346e5bc0b582e094ba8c76447973777b, type: 2}
+  - {fileID: 11400000, guid: e2e43311a5f223247a0c1822575b0621, type: 2}
+  - {fileID: 11400000, guid: 04f3495bbebb97a44821754fe45b517c, type: 2}
   model: {fileID: 3093922485921527580, guid: 312b1da26be01e641877beb835bdcf84, type: 3}
