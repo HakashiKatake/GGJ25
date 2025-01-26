@@ -23,4 +23,8 @@ public class MainSceneUIManager : MonoBehaviour
     {
         
     }
+
+    public void cook() {
+        GameManager.instance.SelectOrder();
+    }
 }
