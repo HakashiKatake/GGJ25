@@ -6,7 +6,7 @@ public class MiniGameManager : MonoBehaviour
     
     private void Start()
     {
-        
+        StartMiniGame(GameManager.instance.curActive);
     }
     public void StartMiniGame(Recipe order)
     {
