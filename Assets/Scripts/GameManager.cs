@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int currentDay = 1;               
@@ -9,21 +9,32 @@ public class GameManager : MonoBehaviour
     public int maxDays = 5;                  
     
     public TMP_Text dayText;                 
-    public TMP_Text orderStatusText;         
+    public TMP_Text orderStatusText;
 
-  
+    public static GameManager instance;
     public GameObject winPanel;              
     public GameObject losePanel;               
 
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else  {
+            Destroy(this);
+        }
         UpdateDayUI();                         
         UpdateOrderStatusUI();             
        
         winPanel.SetActive(false);
         losePanel.SetActive(false);
     }
-
+    private void OnDestroy()
+    {
+        if (instance == this) { instance = null; }
+    }
     public void CompleteOrder()
     {
         totalOrdersCompleted++;
