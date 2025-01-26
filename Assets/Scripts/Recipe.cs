@@ -6,6 +6,5 @@ public class Recipe : ScriptableObject
     public string rName;
 
     public Ingredient[] Ingredients;
-    public Mesh model;
-    public Texture tex;
+    public GameObject model;
 }

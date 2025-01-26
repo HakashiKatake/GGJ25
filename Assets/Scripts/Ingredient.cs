@@ -4,6 +4,5 @@ using UnityEngine;
 public class Ingredient : ScriptableObject
 {
     public string iName;
-    public Mesh model;
-    public Texture tex;
+    public GameObject model;
 }
