@@ -15,39 +15,40 @@ public class GameManager : MonoBehaviour
     public TMP_Text orderStatusText;
     public TMP_Text order1Text;
     public TMP_Text order2Text;
+    public TMP_Text resultText; // Text for displaying win/lose messages
 
     // Win/Lose Panels
-    public GameObject winPanel;
-    public GameObject losePanel;
+    public GameObject resultPanel;
 
     // List of dishes
     private Recipe[] dishes;
     private List<Recipe> dailyOrders = new List<Recipe>();
     public Recipe curActive;
 
-    //Singleton
+    // Singleton
     public static GameManager instance;
 
     private void Awake()
     {
         dishes = Resources.LoadAll<Recipe>("Recipes");
     }
+
     private void OnLevelWasLoaded(int level)
     {
-        StartCoroutine(waitForSceneLoad());
+        StartCoroutine(WaitForSceneLoad());
     }
+
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         if (instance == null)
         {
             instance = this;
+
             UpdateDayUI();
             UpdateOrderStatusUI();
 
-
-            winPanel.SetActive(false);
-            losePanel.SetActive(false);
+            resultPanel.SetActive(false);
 
             GenerateDailyOrders();
         }
@@ -55,17 +56,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        
     }
+
     private void OnDestroy()
     {
         if (instance == this) { instance = null; }
     }
+
     void GenerateDailyOrders()
     {
         dailyOrders.Clear();
         List<Recipe> availableDishes = new List<Recipe>(dishes);
-
 
         for (int i = 0; i < ordersPerDay; i++)
         {
@@ -73,7 +74,6 @@ public class GameManager : MonoBehaviour
             dailyOrders.Add(availableDishes[randomIndex]);
             availableDishes.RemoveAt(randomIndex);
         }
-
 
         order1Text.text = "Order 1: " + dailyOrders[0].rName;
         order1Text.gameObject.SetActive(true);
@@ -89,27 +89,37 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Minigame");
     }
 
-    public void CompleteOrder(bool Successful)
+    public void CompleteOrder(bool successful)
     {
-
-
-
         SceneManager.LoadScene("MainScene");
-       
 
-        if (Successful)
+        if (successful)
         {
             totalOrdersCompleted++;
+            ShowResultMessage("You Win! Dish Complete!");
         }
+        else
+        {
+            ShowResultMessage("You Lose!");
+        }
+    }
 
-      
+    void ShowResultMessage(string message)
+    {
+        resultText.text = message;
+        resultPanel.SetActive(true);
+        Invoke(nameof(HideResultPanel), 2f); // Hide the panel after 2 seconds
+    }
+
+    void HideResultPanel()
+    {
+        resultPanel.SetActive(false);
     }
 
     void AdvanceDay()
     {
         currentDay++;
         UpdateDayUI();
-
 
         if (currentDay <= maxDays)
         {
@@ -130,18 +140,21 @@ public class GameManager : MonoBehaviour
     void WinGame()
     {
         Debug.Log("You win! All orders are complete!");
-        winPanel.SetActive(true);
+        resultPanel.SetActive(true);
+        resultText.text = "Congratulations! You completed all dishes!";
         Time.timeScale = 0;
     }
 
     void LoseGame()
     {
         Debug.Log("You lose! You couldn't complete all orders.");
-        losePanel.SetActive(true);
+        resultPanel.SetActive(true);
+        resultText.text = "Game Over! You couldn't complete the orders.";
         Time.timeScale = 0;
     }
 
-    public System.Collections.IEnumerator waitForSceneLoad() {
+    public System.Collections.IEnumerator WaitForSceneLoad()
+    {
         yield return new WaitForEndOfFrame();
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
@@ -149,8 +162,8 @@ public class GameManager : MonoBehaviour
             orderStatusText = MainSceneUIManager.Instance.orderStatusText;
             order1Text = MainSceneUIManager.Instance.order1Text;
             order2Text = MainSceneUIManager.Instance.order2Text;
-            winPanel = MainSceneUIManager.Instance.winPanel;
-            losePanel = MainSceneUIManager.Instance.losePanel;
+            resultPanel = MainSceneUIManager.Instance.resultPanel;
+            resultText = MainSceneUIManager.Instance.resultText;
 
             int orderIndex = ordersPerDay - dailyOrders.Count;
 
@@ -171,12 +184,10 @@ public class GameManager : MonoBehaviour
             int ordersToday = dailyOrders.Count;
             UpdateOrderStatusUI(ordersToday);
 
-
             if (ordersToday == 0)
             {
                 AdvanceDay();
             }
-
 
             if (currentDay >= maxDays)
             {
@@ -192,4 +203,3 @@ public class GameManager : MonoBehaviour
         }
     }
 }
-

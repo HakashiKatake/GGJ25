@@ -12,6 +12,8 @@ public class MainSceneUIManager : MonoBehaviour
     // Win/Lose Panels
     public GameObject winPanel;
     public GameObject losePanel;
+    public GameObject resultPanel;
+    public TMP_Text resultText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
