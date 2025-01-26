@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Batter
   m_EditorClassIdentifier: 
   iName: Batter
-  model: {fileID: 0}
-  tex: {fileID: 0}
+  model: {fileID: 4980668108940507139, guid: 50143451fbe9a64439433f5d2f0e22cd, type: 3}

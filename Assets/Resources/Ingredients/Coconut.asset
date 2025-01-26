@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Coconut
   m_EditorClassIdentifier: 
   iName: Coconut
-  model: {fileID: 0}
-  tex: {fileID: 0}
+  model: {fileID: 3424597867959007676, guid: 505493ec0cd57174cae95cc76b006865, type: 3}

@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Potato
   m_EditorClassIdentifier: 
   iName: Potato
-  model: {fileID: 0}
-  tex: {fileID: 0}
+  model: {fileID: 960345905966780783, guid: 50830142264f0014aabc283adaad8ca4, type: 3}

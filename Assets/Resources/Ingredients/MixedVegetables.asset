@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: MixedVegetables
   m_EditorClassIdentifier: 
   iName: Mixed Vegetables
-  model: {fileID: 0}
-  tex: {fileID: 0}
+  model: {fileID: 3959031313839031876, guid: a1747a0fa1f40ad4496ba99dcd1f64d9, type: 3}

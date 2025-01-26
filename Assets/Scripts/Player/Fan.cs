@@ -18,7 +18,7 @@ public class Fan : MonoBehaviour
         Collider[] hits = Physics.OverlapBox(this.transform.position,new Vector3(fanRad,distance,fanRad),Quaternion.identity, fanInteractible,QueryTriggerInteraction.Collide);
         foreach (Collider hit in hits)
         {
-            hit.GetComponent<Rigidbody>().AddForce((force * Vector3.Normalize(hit.transform.position - this.transform.position))/Vector3.SqrMagnitude(hit.transform.position - this.transform.position), ForceMode.Force);
+            hit.GetComponent<Rigidbody>().AddForce((force * Vector3.Normalize(hit.transform.position - this.transform.position))/Mathf.Abs(Vector3.Magnitude(hit.transform.position - this.transform.position)), ForceMode.Force);
         }
     }
 }

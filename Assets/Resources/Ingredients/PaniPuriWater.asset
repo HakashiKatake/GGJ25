@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: PaniPuriWater
   m_EditorClassIdentifier: 
   iName: Pani Puri Water
-  model: {fileID: 0}
-  tex: {fileID: 0}
+  model: {fileID: 8878075599161846438, guid: bb723417e0a307c46b8e53fb68f3c4a9, type: 3}

@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: GreenChutney
   m_EditorClassIdentifier: 
   iName: Green Chutney
-  model: {fileID: 0}
-  tex: {fileID: 0}
+  model: {fileID: 1619136049716358963, guid: 52a4442320ed4aa47859bfeeed115670, type: 3}

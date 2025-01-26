@@ -34,15 +34,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnLevelWasLoaded(int level)
     {
-        if (SceneManager.GetActiveScene().name == "MainScene")
-        {
-            dayText = MainSceneUIManager.Instance.dayText;
-            orderStatusText = MainSceneUIManager.Instance.orderStatusText;
-            order1Text = MainSceneUIManager.Instance.order1Text;
-            order2Text = MainSceneUIManager.Instance.order2Text;
-            winPanel = MainSceneUIManager.Instance.winPanel;
-            losePanel = MainSceneUIManager.Instance.losePanel;
-        }
+        StartCoroutine(waitForSceneLoad());
     }
     void Start()
     {
@@ -50,19 +42,20 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            UpdateDayUI();
+            UpdateOrderStatusUI();
+
+
+            winPanel.SetActive(false);
+            losePanel.SetActive(false);
+
+            GenerateDailyOrders();
         }
         else
         {
             Destroy(this);
         }
-        UpdateDayUI();
-        UpdateOrderStatusUI();
-
-
-        winPanel.SetActive(false);
-        losePanel.SetActive(false);
-
-        GenerateDailyOrders();
+        
     }
     private void OnDestroy()
     {
@@ -99,50 +92,17 @@ public class GameManager : MonoBehaviour
     public void CompleteOrder(bool Successful)
     {
 
-        int orderIndex = ordersPerDay - dailyOrders.Count;
-        totalOrdersCompleted++;
 
 
-        if (orderIndex == 0 && order1Text.gameObject.activeSelf)
-        {
-            order1Text.gameObject.SetActive(false);
-        }
-        else if (orderIndex == 1 && order2Text.gameObject.activeSelf)
-        {
-            order2Text.gameObject.SetActive(false);
-        }
-
-        if (dailyOrders.Count > 0)
-        {
-            dailyOrders.RemoveAt(0);
-        }
+        SceneManager.LoadScene("MainScene");
+       
 
         if (Successful)
         {
             totalOrdersCompleted++;
         }
 
-        int ordersToday = dailyOrders.Count;
-        UpdateOrderStatusUI(ordersToday);
-
-
-        if (ordersToday == 0)
-        {
-            AdvanceDay();
-        }
-
-
-        if (currentDay >= maxDays)
-        {
-            if (totalOrdersCompleted == ordersPerDay * maxDays)
-            {
-                WinGame();
-            }
-            else
-            {
-                LoseGame();
-            }
-        }
+      
     }
 
     void AdvanceDay()
@@ -179,6 +139,57 @@ public class GameManager : MonoBehaviour
         Debug.Log("You lose! You couldn't complete all orders.");
         losePanel.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public System.Collections.IEnumerator waitForSceneLoad() {
+        yield return new WaitForEndOfFrame();
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            dayText = MainSceneUIManager.Instance.dayText;
+            orderStatusText = MainSceneUIManager.Instance.orderStatusText;
+            order1Text = MainSceneUIManager.Instance.order1Text;
+            order2Text = MainSceneUIManager.Instance.order2Text;
+            winPanel = MainSceneUIManager.Instance.winPanel;
+            losePanel = MainSceneUIManager.Instance.losePanel;
+
+            int orderIndex = ordersPerDay - dailyOrders.Count;
+
+            if (orderIndex == 0 && order1Text.gameObject.activeSelf)
+            {
+                order1Text.gameObject.SetActive(false);
+            }
+            else if (orderIndex == 1 && order2Text.gameObject.activeSelf)
+            {
+                order2Text.gameObject.SetActive(false);
+            }
+
+            if (dailyOrders.Count > 0)
+            {
+                dailyOrders.RemoveAt(0);
+            }
+
+            int ordersToday = dailyOrders.Count;
+            UpdateOrderStatusUI(ordersToday);
+
+
+            if (ordersToday == 0)
+            {
+                AdvanceDay();
+            }
+
+
+            if (currentDay >= maxDays)
+            {
+                if (totalOrdersCompleted == ordersPerDay * maxDays)
+                {
+                    WinGame();
+                }
+                else
+                {
+                    LoseGame();
+                }
+            }
+        }
     }
 }
 

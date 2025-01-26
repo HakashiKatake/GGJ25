@@ -105,9 +105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 7
-  parent: {fileID: 0}
+  parent: {fileID: 3451889299968602807}
   i: {fileID: 0}
-  LifeTIme: 5
+  LifeTIme: 20
 --- !u!135 &5044624101704901191
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3418835336815736241}
-  dynamicViscosityOfAir: 0.2
+  dynamicViscosityOfAir: 0.0018
 --- !u!114 &6297904628003003093
 MonoBehaviour:
   m_ObjectHideFlags: 0

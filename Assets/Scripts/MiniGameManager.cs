@@ -5,8 +5,10 @@ public class MiniGameManager : MonoBehaviour
 {
     public static Recipe activeOrder;
     public static bool gameStarted = false;
+    public static MiniGameManager gameManager;
     private void Awake()
     {
+        gameManager = this;
         StartMiniGame(GameManager.instance.curActive);
     }
     public void StartMiniGame(Recipe order)

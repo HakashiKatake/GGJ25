@@ -9,7 +9,8 @@ public class BubbleWithIngredient : Bubble
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Instantiate(i.model, parent);
+        GameObject g = Instantiate(i.model,transform.position,Quaternion.identity);
+        g.transform.parent = parent;
         StartCoroutine(die());
     }
     public override void merge(Bubble other)
