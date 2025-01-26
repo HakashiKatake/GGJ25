@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class MiniGameManager : MonoBehaviour
 {
     public static Recipe activeOrder;
     public static bool gameStarted = false;
-    private void Start()
+    private void Awake()
     {
         StartMiniGame(GameManager.instance.curActive);
     }
@@ -15,11 +16,9 @@ public class MiniGameManager : MonoBehaviour
         gameStarted = true;
     }
 
-    public void CompleteMiniGame(int orderIndex)
+    public void CompleteMiniGame(bool success)
     {
         Debug.Log("Mini-game completed for: " + activeOrder.rName);
-
-       
-        GameManager.instance.CompleteOrder(orderIndex);
+        GameManager.instance.CompleteOrder(success);
     }
 }

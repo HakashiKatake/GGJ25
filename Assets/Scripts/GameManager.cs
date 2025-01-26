@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnLevelWasLoaded(int level)
     {
-        if (SceneManager.GetSceneAt(level).name == "MainScene")
+        if (SceneManager.GetActiveScene().name == "MainScene")
         {
             dayText = MainSceneUIManager.Instance.dayText;
             orderStatusText = MainSceneUIManager.Instance.orderStatusText;
@@ -88,13 +88,12 @@ public class GameManager : MonoBehaviour
         order2Text.gameObject.SetActive(true);
     }
 
-    public void SelectOrder(int orderIndex)
+    public void SelectOrder()
     {
-        if (orderIndex < 0 || orderIndex >= dailyOrders.Count)
-            return;
+        if (dailyOrders.Count <= 0) { return; }
+        curActive = dailyOrders[0];
 
-
-        curActive = dailyOrders[orderIndex];
+        SceneManager.LoadScene("Minigame");
     }
 
     public void CompleteOrder(bool Successful)
