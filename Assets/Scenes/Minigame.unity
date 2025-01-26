@@ -642,6 +642,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5324926778500480803, guid: e36363645116f3846be92f676fb9787c, type: 3}
+      propertyPath: playAtPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474323408013993813, guid: e36363645116f3846be92f676fb9787c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1276,13 +1280,13 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 6a91934787c69744189e2f09ff8c369e, type: 3}
   m_Resource: {fileID: 8300000, guid: 6a91934787c69744189e2f09ff8c369e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.556
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
