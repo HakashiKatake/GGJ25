@@ -2,21 +2,25 @@ using UnityEngine;
 
 public class MiniGameManager : MonoBehaviour
 {
-    public string activeOrder; 
-
-    public void StartMiniGame(string order)
+    public Recipe activeOrder;
+    
+    private void Start()
+    {
+        
+    }
+    public void StartMiniGame(Recipe order)
     {
         activeOrder = order; 
-        Debug.Log("Mini-game started for: " + activeOrder);
+        Debug.Log("Mini-game started for: " + activeOrder.rName);
 
     
     }
 
     public void CompleteMiniGame(int orderIndex)
     {
-        Debug.Log("Mini-game completed for: " + activeOrder);
+        Debug.Log("Mini-game completed for: " + activeOrder.rName);
 
        
-        FindObjectOfType<GameManager>().CompleteOrder(orderIndex);
+        GameManager.instance.CompleteOrder(orderIndex);
     }
 }

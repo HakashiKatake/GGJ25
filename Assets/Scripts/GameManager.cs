@@ -20,14 +20,28 @@ public class GameManager : MonoBehaviour
     public GameObject losePanel;            
 
     // List of dishes
-    public List<string> dishes = new List<string> { "Vada Pav", "Pani Puri", "Pav Bhaji", "Dosa" };
-    private List<string> dailyOrders = new List<string>();  
+    public Recipe[] dishes;
+    private List<Recipe> dailyOrders = new List<Recipe>();
+    public Recipe curActive;
 
-    // Reference to MiniGameManager
-    public MiniGameManager miniGameManager;
+    //Singleton
+    public static GameManager instance;
 
+    private void Awake()
+    {
+        dishes = Resources.LoadAll<Recipe>("Recipes");
+    }
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         UpdateDayUI();                         
         UpdateOrderStatusUI();               
 
@@ -37,11 +51,14 @@ public class GameManager : MonoBehaviour
 
         GenerateDailyOrders();                 
     }
-
+    private void OnDestroy()
+    {
+        if (instance == this) { instance = null; }
+    }
     void GenerateDailyOrders()
     {
         dailyOrders.Clear();                 
-        List<string> availableDishes = new List<string>(dishes); 
+        List<Recipe> availableDishes = new List<Recipe>(dishes); 
 
        
         for (int i = 0; i < ordersPerDay; i++)
@@ -52,9 +69,9 @@ public class GameManager : MonoBehaviour
         }
 
         
-        order1Text.text = "Order 1: " + dailyOrders[0];
+        order1Text.text = "Order 1: " + dailyOrders[0].rName;
         order1Text.gameObject.SetActive(true);
-        order2Text.text = "Order 2: " + dailyOrders[1];
+        order2Text.text = "Order 2: " + dailyOrders[1].rName;
         order2Text.gameObject.SetActive(true);
     }
 
@@ -63,8 +80,8 @@ public class GameManager : MonoBehaviour
         if (orderIndex < 0 || orderIndex >= dailyOrders.Count)
             return;
 
-        string selectedOrder = dailyOrders[orderIndex];
-        miniGameManager.StartMiniGame(selectedOrder); 
+
+        curActive = dailyOrders[orderIndex];
     }
 
     public void CompleteOrder(int orderIndex)
