@@ -3,7 +3,7 @@ using UnityEngine;
 public class MiniGameManager : MonoBehaviour
 {
     public Recipe activeOrder;
-    
+    public static bool gameStarted = false;
     private void Start()
     {
         StartMiniGame(GameManager.instance.curActive);
@@ -12,8 +12,7 @@ public class MiniGameManager : MonoBehaviour
     {
         activeOrder = order; 
         Debug.Log("Mini-game started for: " + activeOrder.rName);
-
-    
+        gameStarted = true;
     }
 
     public void CompleteMiniGame(int orderIndex)

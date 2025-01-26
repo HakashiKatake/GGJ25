@@ -8,7 +8,6 @@ public class SpawnInArea : MonoBehaviour
     public Ingredient[] spawnPool;
 
     public GameObject spawnPrefab;
-
     public Vector2 TimeDelayBounds;
     public float timeToSpawn;
     public float timer;
@@ -24,6 +23,7 @@ public class SpawnInArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!MiniGameManager.gameStarted) { return; }
         if (timer >= timeToSpawn) { 
             var g = Instantiate(spawnPrefab,new Vector3(Random.Range(a.position.x, b.position.x), Random.Range(a.position.y, b.position.y), Random.Range(a.position.z, b.position.z)), Quaternion.identity);
             g.GetComponent<BubbleWithIngredient>().i = spawnPool[Random.Range(0,spawnPool.Length)];
