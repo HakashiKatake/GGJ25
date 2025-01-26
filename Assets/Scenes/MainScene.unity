@@ -5058,8 +5058,8 @@ MonoBehaviour:
   orderStatusText: {fileID: 734955883}
   order1Text: {fileID: 1689201749}
   order2Text: {fileID: 1421830413}
-  resultText: {fileID: 0}
-  resultPanel: {fileID: 0}
+  resultText: {fileID: 1868969441}
+  resultPanel: {fileID: 157599719}
   curActive: {fileID: 0}
 --- !u!4 &2040128991
 Transform:

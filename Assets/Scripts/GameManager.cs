@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
         dishes = Resources.LoadAll<Recipe>("Recipes");
     }
 
