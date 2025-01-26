@@ -1,11 +1,12 @@
 using UnityEngine;
-
+using System.Collections.Generic;
+using System.Linq;
 public class SpawnInArea : MonoBehaviour
 {
     public Transform a;
     public Transform b;
 
-    public Ingredient[] spawnPool;
+    public List<Ingredient> spawnPool;
 
     public GameObject spawnPrefab;
     public Vector2 TimeDelayBounds;
@@ -14,7 +15,11 @@ public class SpawnInArea : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        resetTimer();   
+        resetTimer();
+        spawnPool = new List<Ingredient>(MiniGameManager.activeOrder.Ingredients.Length);
+        Ingredient[] all = Resources.LoadAll<Ingredient>("Ingredients");
+        spawnPool.Append(all[Random.Range(0, all.Length)]);
+        spawnPool.Append(all[Random.Range(0, all.Length)]);
     }
     private void resetTimer() {
         timeToSpawn = Random.Range(TimeDelayBounds.x, TimeDelayBounds.y);
@@ -26,7 +31,8 @@ public class SpawnInArea : MonoBehaviour
         if (!MiniGameManager.gameStarted) { return; }
         if (timer >= timeToSpawn) { 
             var g = Instantiate(spawnPrefab,new Vector3(Random.Range(a.position.x, b.position.x), Random.Range(a.position.y, b.position.y), Random.Range(a.position.z, b.position.z)), Quaternion.identity);
-            g.GetComponent<BubbleWithIngredient>().i = spawnPool[Random.Range(0,spawnPool.Length)];
+            g.GetComponent<BubbleWithIngredient>().i = spawnPool[Random.Range(0,spawnPool.Count)];
+            resetTimer();
         }
         timer += Time.deltaTime;
     }

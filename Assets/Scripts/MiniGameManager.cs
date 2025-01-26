@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MiniGameManager : MonoBehaviour
 {
-    public Recipe activeOrder;
+    public static Recipe activeOrder;
     public static bool gameStarted = false;
     private void Start()
     {
